@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="pizzaPortal">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../dist/css/style.css"/>
+</head>
+<body ng-controller="pizzaCrtl">
+<header>
+    <div class="container flex-between">
+        <div class="logo-block">
+            <a href="#">Pizza Portal</a>
+        </div>
+        <div class="time-block">{{myTime | date: 'HH:mm:ss'}}</div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="form-section">
+            <h2 class="hl">Enter your details</h2>
+            <form role="form" name="pizzaForm" novalidate>
+                <div class="form-field">
+                    <label for="uName">Name<span class="red-star">*</span></label>
+                    <p ng-show="pizzaForm.uName.$touched && pizzaForm.uName.$error.required">Field is required</p>
+                    <input type="text" name="uName" id="uName" ng-model="user.name" required="required">
+                </div>
+                <div class="form-field">
+                    <label for="uEmail">Email<span class="red-star">*</span></label>
+                    <p ng-show="pizzaForm.uEmail.$touched && pizzaForm.uEmail.$error.required || pizzaForm.uEmail.$error.email">
+                        Field is required</p>
+                    <input type="email" name="uEmail" id="uEmail" ng-model="user.email" required="required">
+                </div>
+                <div class="form-field">
+                    <label for="uConfirm">Confirm<span class="red-star">*</span></label>
+                    <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required">Field is required</p>
+                    <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" required="required">
+                </div>
+                <div class="form-field">
+                    <label for="uAddress">Address<span class="red-star">*</span></label>
+                    <p ng-show="pizzaForm.uAddress.$touched && pizzaForm.uAddress.$error.required">Field is required</p>
+                    <input type="text" name="uAddress" id="uAddress" ng-model="user.address" required="required">
+                </div>
+                <div class="form-field">
+                    <label for="uPostcode">PostCode<span class="red-star">*</span></label>
+                    <p ng-show="pizzaForm.uPostcode.$touched && pizzaForm.uPostcode.$error.required">Field is
+                        required</p>
+                    <input type="text" name="uPostcode" id="uPostcode" ng-model="user.postcode" required="required">
+                </div>
+                <div class="form-field">
+                    <label for="uContact">Contact Number<span class="red-star">*</span></label>
+                    <p ng-show="pizzaForm.uContact.$touched && pizzaForm.uContact.$error.required">Field is required</p>
+                    <input type="text" name="uContact" id="uContact" ng-model="user.contact" required="required">
+                </div>
+            </form>
+        </div>
+        <div class="pizza-section flex-between">
+            <div class="item-block">
+                <div class="selected-pizza">
+                    <div class="large-pizza pizza">
+                        <div class="slice-pizza slice1"></div>
+                        <div class="slice-pizza slice2"></div>
+                        <div class="slice-pizza slice3"></div>
+                        <div class="slice-pizza slice4"></div>
+                    </div>
+                </div>
+                <h3>Large 45cm</h3>
+            </div>
+            <div class="item-block">
+                <div class="selected-pizza">
+                    <div class="medium-pizza pizza">
+                        <div class="slice-pizza slice1"></div>
+                        <div class="slice-pizza slice2"></div>
+                        <div class="slice-pizza slice3"></div>
+                        <div class="slice-pizza slice4"></div>
+                    </div>
+                </div>
+                <h3>Medium 37cm</h3>
+            </div>
+            <div class="item-block">
+                <div class="selected-pizza">
+                    <div class="small-pizza pizza">
+                        <div class="slice-pizza slice1"></div>
+                        <div class="slice-pizza slice2"></div>
+                        <div class="slice-pizza slice3"></div>
+                        <div class="slice-pizza slice4"></div>
+                    </div>
+                </div>
+                <h3>Small 30cm</h3>
+            </div>
+        </div>
+    </div>
+</main>
+<div>
+    {{message}}
+</div>
+
+<script type="text/javascript" src="../dist/js/vendor.js"></script>
+<script type="text/javascript" src="../dist/js/app.js"></script>
+</body>
+</html>
