@@ -1,12 +1,10 @@
-const pizzaPortal = angular.module('pizzaPortal', []);
+const pizzaPortal = angular.module('pizzaPortal', ['pizzaDirectives']);
 
 pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) => {
-    $scope.message = 'hello world!';
-
 
     $interval(() => {
         $scope.myTime = new Date();
 
-    }, 1000)
-
+    }, 1000);
+    $scope.isChecked = false;
 }]);

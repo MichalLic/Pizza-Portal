@@ -10,3 +10,14 @@
   overflow: hidden;
   padding: 0 15px;
 }
+
+.isSelected {
+  border: 1px solid $color-grey;
+  background-color: $color-grey-primary;
+  padding: 7px;
+  border-radius: 60px;
+}
+
+.isSelectedHl {
+  color: $color-green-primary;
+}
