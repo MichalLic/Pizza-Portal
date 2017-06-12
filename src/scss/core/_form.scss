@@ -1,9 +1,8 @@
-form {
+form.pizzaForm {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 
-  .form-field{
+  .form-field {
     display: flex;
     flex-wrap: wrap;
     flex-basis: percentage(1/3);
@@ -12,21 +11,21 @@ form {
     font-family: "AR CENA";
     font-size: 20px;
 
-    label{
+    label {
       flex-basis: 40%;
-      .red-star{
+
+      .red-star {
         color: $color-red-primary;
       }
     }
 
-    p{
+    p {
       flex-basis: 60%;
       color: $color-red-primary;
       text-align: end;
       padding-right: 10px;
       font-size: 18px;
     }
-
 
     input {
       flex-basis: 100%;

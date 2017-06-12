@@ -16,9 +16,9 @@
 </header>
 <main>
     <div class="container">
-        <div class="form-section">
+        <div class="form-section green-border">
             <h2 class="hl">Enter your details</h2>
-            <form role="form" name="pizzaForm" novalidate>
+            <form role="form" name="pizzaForm" class="pizzaForm" novalidate>
                 <div class="form-field">
                     <label for="uName">Name<span class="red-star">*</span></label>
                     <p ng-show="pizzaForm.uName.$touched && pizzaForm.uName.$error.required">Field is required</p>
@@ -53,8 +53,12 @@
                 </div>
             </form>
         </div>
-        <div class="pizza-section">
-            <form name="pizzaForm" class="flex-between">
+
+        <div class="pizza-section green-border">
+            <div>
+                <h2 class="hl">Choose your pizzas</h2>
+            </div>
+            <form name="selectForm" class="flex-between">
                 <div class="item-block">
                     <label for="pizzaLg">
                         <input type="radio" id="pizzaLg" ng-model="isChecked" ng-value="1">
@@ -67,7 +71,7 @@
                             </div>
                         </div>
                     </label>
-                    <h3>Large 45cm</h3>
+                    <h3 ng-class="{isSelectedHl: isChecked == 1}">Large 45cm</h3>
                 </div>
                 <div class="item-block">
                     <label for="pizzaMd">
@@ -81,7 +85,7 @@
                             </div>
                         </div>
                     </label>
-                    <h3>Medium 37cm</h3>
+                    <h3 ng-class="{isSelectedHl: isChecked == 2}">Medium 37cm</h3>
                 </div>
                 <div class="item-block">
                     <label for="pizzaSm">
@@ -95,22 +99,21 @@
                             </div>
                         </div>
                     </label>
-                    <h3>Small 30cm</h3>
+                    <h3 ng-class="{isSelectedHl: isChecked == 3}">Small 30cm</h3>
                 </div>
             </form>
-
+        </div>
+        <div class="tippings-block">
+            <h2 class="hl">Pick your toppings</h2>
+            <div class="tipping" ng-repeat="topping in toppings">
+                <label for="(topping.name)" ng-click="addToppings()">
+                    <input type="radio" id="(topping.name)">
+                    {{topping.name}}
+                </label>
+            </div>
         </div>
         <div class="order-summary">
-            <h2>Order Summary</h2>
-            <div ng-show="isChecked == 1">
-                {{largePrice}}
-            </div>
-            <div ng-show="isChecked == 2">
-                {{mediumPrice}}
-            </div>
-            <div ng-show="isChecked == 3">
-                {{smallPrice}}
-            </div>
+            <h2 class="hl">Order Summary</h2>
         </div>
     </div>
 </main>

@@ -1,11 +1,36 @@
-.form-section {
-
-  h2.hl {
-    padding: 25px 0;
-    color: $color-grey;
-    font-family: sans-serif;
-    font-family: "Sitka Heading";
-    font-weight: 300;
-  }
+h2.hl {
+  padding: 25px 0;
+  color: $color-grey;
+  font-family: sans-serif;
+  font-family: "Sitka Heading";
+  font-weight: 300;
+  width: 100%;
 }
 
+.tippings-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .tipping {
+    flex-basis: 26%;
+    font-family: "AR CENA";
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid $color-grey-primary;
+    padding: 8px;
+    margin: 10px 0;
+    color: $color-green-primary;
+    transition: .4s;
+    cursor: pointer;
+
+    &:hover{
+      background-color: $color-grey-primary;
+      color: $color-white;
+    }
+
+    input {
+      width: 1px;
+    }
+  }
+}
