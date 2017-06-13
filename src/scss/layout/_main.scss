@@ -13,24 +13,28 @@ h2.hl {
   justify-content: space-between;
 
   .tipping {
+    display: flex;
+    align-items: center;
     flex-basis: 26%;
-    font-family: "AR CENA";
-    text-align: center;
     font-size: 18px;
-    border: 1px solid $color-grey-primary;
-    padding: 8px;
     margin: 10px 0;
-    color: $color-green-primary;
-    transition: .4s;
-    cursor: pointer;
-
-    &:hover{
-      background-color: $color-grey-primary;
-      color: $color-white;
-    }
 
     input {
-      width: 1px;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    span {
+      font-family: "AR CENA";
+      //display: flex;
+      //justify-content: center;
+      //border: 1px solid $color-grey-primary;;
+      //padding: 8px;
+      color: $color-black;
+      transition: .4s;
+      //cursor: pointer;
+
     }
   }
 }

@@ -103,17 +103,32 @@
                 </div>
             </form>
         </div>
-        <div class="tippings-block">
+        <div class="tippings-block green-border">
             <h2 class="hl">Pick your toppings</h2>
             <div class="tipping" ng-repeat="topping in toppings">
-                <label for="(topping.name)" ng-click="addToppings()">
-                    <input type="radio" id="(topping.name)">
+                <input type="checkbox" id="(topping.name)" ng-click="addToppings(topping.name)" ng-model="selectedTopping" ng-value="(topping.name)">
+                <span ng-class="{isSelectedTopping : selectedTopping}">
                     {{topping.name}}
-                </label>
+                </span>
             </div>
         </div>
         <div class="order-summary">
             <h2 class="hl">Order Summary</h2>
+            <div>
+                <div class="flex-between" ng-show="isChecked == 1">
+                    <p>Large pizza</p>
+                    <p>{{prices.largePizza | currency}}</p>
+                </div>
+                <div class="flex-between" ng-show="isChecked == 2">
+                    <p>Medium pizza</p>
+                    <p>{{prices.mediumPizza | currency}}</p>
+                </div>
+                <div class="flex-between" ng-show="isChecked == 3">
+                    <p>Small pizza</p>
+                    <p>{{prices.smallPizza | currency}}</p>
+                </div>
+            </div>
+            <div ng-show="$index">{{$index}}</div>
         </div>
     </div>
 </main>

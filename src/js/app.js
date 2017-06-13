@@ -17,15 +17,21 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
         {name: 'Salami'}
     ];
 
+    $scope.prices = {
+        largePizza: 19.90,
+        largeToppings: 2,
+        mediumPizza: 15.90,
+        mediumToppings: 1.5,
+        smallPizza: 12.90,
+        smallToppings: 1,
+
+    };
+
     $interval(() => {
         $scope.myTime = new Date();
 
     }, 1000);
 
     $scope.isChecked = false;
-
-    $scope.addToppings = () => {
-        console.log('nieeeee')
-    }
 
 }]);
