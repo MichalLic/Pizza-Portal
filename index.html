@@ -16,107 +16,113 @@
 </header>
 <main>
     <div class="container">
-        <div class="form-section green-border">
-            <h2 class="hl">Enter your details</h2>
-            <form role="form" name="pizzaForm" class="pizzaForm" novalidate>
-                <div class="form-field">
-                    <label for="uName">Name<span class="red-star">*</span></label>
-                    <p ng-show="pizzaForm.uName.$touched && pizzaForm.uName.$error.required">Field is required</p>
-                    <input type="text" name="uName" id="uName" ng-model="user.name" required="required">
-                </div>
-                <div class="form-field">
-                    <label for="uEmail">Email<span class="red-star">*</span></label>
-                    <p ng-show="pizzaForm.uEmail.$touched && pizzaForm.uEmail.$error.required || pizzaForm.uEmail.$error.email">
-                        Field is required</p>
-                    <input type="email" name="uEmail" id="uEmail" ng-model="user.email" required="required">
-                </div>
-                <div class="form-field">
-                    <label for="uConfirm">Confirm<span class="red-star">*</span></label>
-                    <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required">Field is required</p>
-                    <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" required="required">
-                </div>
-                <div class="form-field">
-                    <label for="uAddress">Address<span class="red-star">*</span></label>
-                    <p ng-show="pizzaForm.uAddress.$touched && pizzaForm.uAddress.$error.required">Field is required</p>
-                    <input type="text" name="uAddress" id="uAddress" ng-model="user.address" required="required">
-                </div>
-                <div class="form-field">
-                    <label for="uPostcode">PostCode<span class="red-star">*</span></label>
-                    <p ng-show="pizzaForm.uPostcode.$touched && pizzaForm.uPostcode.$error.required">Field is
-                        required</p>
-                    <input type="text" name="uPostcode" id="uPostcode" ng-model="user.postcode" required="required">
-                </div>
-                <div class="form-field">
-                    <label for="uContact">Contact Number<span class="red-star">*</span></label>
-                    <p ng-show="pizzaForm.uContact.$touched && pizzaForm.uContact.$error.required">Field is required</p>
-                    <input type="text" name="uContact" id="uContact" ng-model="user.contact" required="required">
-                </div>
-            </form>
-        </div>
-
-        <div class="pizza-section green-border">
-            <div>
-                <h2 class="hl">Choose your pizzas</h2>
+        <div ng-hide="orderPizza">
+            <div class="form-section green-border">
+                <h2 class="hl">Enter your details</h2>
+                <form role="form" name="pizzaForm" class="pizzaForm" novalidate ng-submit="pizzaForm.$valid">
+                    <div class="form-field">
+                        <label for="uName">Name<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uName.$touched && pizzaForm.uName.$error.required">Field is required</p>
+                        <input type="text" name="uName" id="uName" ng-model="user.name" required="required">
+                    </div>
+                    <div class="form-field">
+                        <label for="uEmail">Email<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uEmail.$touched && pizzaForm.uEmail.$error.required || pizzaForm.uEmail.$error.email">
+                            Field is required</p>
+                        <input type="email" name="uEmail" id="uEmail" ng-model="user.email" required="required">
+                    </div>
+                    <div class="form-field">
+                        <label for="uConfirm">Confirm<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required">Field is
+                            required</p>
+                        <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" required="required">
+                    </div>
+                    <div class="form-field">
+                        <label for="uAddress">Address<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uAddress.$touched && pizzaForm.uAddress.$error.required">Field is
+                            required</p>
+                        <input type="text" name="uAddress" id="uAddress" ng-model="user.address" required="required">
+                    </div>
+                    <div class="form-field">
+                        <label for="uPostcode">PostCode<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uPostcode.$touched && pizzaForm.uPostcode.$error.required">Field is
+                            required</p>
+                        <input type="text" name="uPostcode" id="uPostcode" ng-model="user.postcode" required="required">
+                    </div>
+                    <div class="form-field">
+                        <label for="uContact">Contact Number<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uContact.$touched && pizzaForm.uContact.$error.required">Field is
+                            required</p>
+                        <input type="text" name="uContact" id="uContact" ng-model="user.contact" required="required">
+                    </div>
+                </form>
             </div>
-            <form name="selectForm" class="flex-between">
-                <div class="item-block">
-                    <label for="pizzaLg">
-                        <input type="radio" id="pizzaLg" ng-click="setToppingPrice($event)" ng-model="isChecked"
-                               ng-value="1">
-                        <div ng-class="{isSelected : (isChecked === 1)}">
-                            <div class="large-pizza pizza">
-                                <div class="slice-pizza slice1"></div>
-                                <div class="slice-pizza slice2"></div>
-                                <div class="slice-pizza slice3"></div>
-                                <div class="slice-pizza slice4"></div>
-                            </div>
-                        </div>
-                    </label>
-                    <h3 ng-class="{isSelectedHl: isChecked == 1}">Large 45cm</h3>
+
+            <div class="pizza-section green-border">
+                <div>
+                    <h2 class="hl">Choose your pizzas</h2>
                 </div>
-                <div class="item-block">
-                    <label for="pizzaMd">
-                        <input type="radio" id="pizzaMd" ng-click="setToppingPrice($event)" ng-model="isChecked"
-                               ng-value="2">
-                        <div ng-class="{isSelected : isChecked == 2}">
-                            <div class="medium-pizza pizza">
-                                <div class="slice-pizza slice1"></div>
-                                <div class="slice-pizza slice2"></div>
-                                <div class="slice-pizza slice3"></div>
-                                <div class="slice-pizza slice4"></div>
+                <form name="selectForm" class="flex-between">
+                    <div class="item-block">
+                        <label for="pizzaLg">
+                            <input type="radio" id="pizzaLg" ng-click="setToppingPrice($event)" ng-model="isChecked"
+                                   ng-value="1">
+                            <div ng-class="{isSelected : (isChecked === 1)}">
+                                <div class="large-pizza pizza">
+                                    <div class="slice-pizza slice1"></div>
+                                    <div class="slice-pizza slice2"></div>
+                                    <div class="slice-pizza slice3"></div>
+                                    <div class="slice-pizza slice4"></div>
+                                </div>
                             </div>
-                        </div>
-                    </label>
-                    <h3 ng-class="{isSelectedHl: isChecked == 2}">Medium 37cm</h3>
-                </div>
-                <div class="item-block">
-                    <label for="pizzaSm">
-                        <input type="radio" id="pizzaSm" ng-click="setToppingPrice($event)" ng-model="isChecked"
-                               ng-value="3">
-                        <div ng-class="{isSelected : isChecked == 3}">
-                            <div class="small-pizza pizza">
-                                <div class="slice-pizza slice1"></div>
-                                <div class="slice-pizza slice2"></div>
-                                <div class="slice-pizza slice3"></div>
-                                <div class="slice-pizza slice4"></div>
+                        </label>
+                        <h3 ng-class="{isSelectedHl: isChecked == 1}">Large 45cm</h3>
+                    </div>
+                    <div class="item-block">
+                        <label for="pizzaMd">
+                            <input type="radio" id="pizzaMd" ng-click="setToppingPrice($event)" ng-model="isChecked"
+                                   ng-value="2">
+                            <div ng-class="{isSelected : isChecked == 2}">
+                                <div class="medium-pizza pizza">
+                                    <div class="slice-pizza slice1"></div>
+                                    <div class="slice-pizza slice2"></div>
+                                    <div class="slice-pizza slice3"></div>
+                                    <div class="slice-pizza slice4"></div>
+                                </div>
                             </div>
-                        </div>
-                    </label>
-                    <h3 ng-class="{isSelectedHl: isChecked == 3}">Small 30cm</h3>
-                </div>
-            </form>
-        </div>
-        <div class="tippings-block green-border">
-            <h2 class="hl">Pick your toppings</h2>
-            <h4 class="warn-title" ng-hide="isChecked == 1 || isChecked == 2 || isChecked == 3">Choose pizza's size at
-                first!</h4>
-            <div class="tipping" ng-repeat="topping in toppings">
-                <input type="checkbox" id="(topping.name)" ng-click="isCheckedTopping($event, topping.name)"
-                       ng-model="selectedTopping" ng-value="(topping.name)"
-                       ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3">
-                <span ng-class="{isSelectedTopping : selectedTopping}">
+                        </label>
+                        <h3 ng-class="{isSelectedHl: isChecked == 2}">Medium 37cm</h3>
+                    </div>
+                    <div class="item-block">
+                        <label for="pizzaSm">
+                            <input type="radio" id="pizzaSm" ng-click="setToppingPrice($event)" ng-model="isChecked"
+                                   ng-value="3">
+                            <div ng-class="{isSelected : isChecked == 3}">
+                                <div class="small-pizza pizza">
+                                    <div class="slice-pizza slice1"></div>
+                                    <div class="slice-pizza slice2"></div>
+                                    <div class="slice-pizza slice3"></div>
+                                    <div class="slice-pizza slice4"></div>
+                                </div>
+                            </div>
+                        </label>
+                        <h3 ng-class="{isSelectedHl: isChecked == 3}">Small 30cm</h3>
+                    </div>
+                </form>
+            </div>
+            <div class="tippings-block green-border">
+                <h2 class="hl">Pick your toppings</h2>
+                <h4 class="warn-title" ng-hide="isChecked == 1 || isChecked == 2 || isChecked == 3">Choose pizza's size
+                    at
+                    first!</h4>
+                <div class="tipping" ng-repeat="topping in toppings">
+                    <input type="checkbox" id="(topping.name)" ng-click="isCheckedTopping($event, topping.name)"
+                           ng-model="selectedTopping" ng-value="(topping.name)"
+                           ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3">
+                    <span ng-class="{isSelectedTopping : selectedTopping}">
                     {{topping.name}}
                 </span>
+                </div>
             </div>
         </div>
         <div class="order-summary">
@@ -141,10 +147,34 @@
                     </ul>
                 </div>
             </div>
-            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span></h2>
+            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span>
+            </h2>
+            <!--<button ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3" ng-click="confirm()">Order Pizza!</button>-->
+            <button type="submit" ng-disabled="pizzaForm.$valid" ng-click="confirm()">Order Pizza!</button>
         </div>
     </div>
 </main>
+<footer>
+    <div class="container flex-between">
+        <div class="footer-link">
+            <ul>
+                <li><a href="#">Order Pizza</a></li>
+                <li><a href="#">Find Pizza</a></li>
+                <li><a href="#">Pizza Games</a></li>
+                <li><a href="#">Order Pizza</a></li>
+                <li><a href="#">Get Coupons</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+        </div>
+        <div class="copyright">
+            &copy PizzaPortal all rights reserved
+        </div>
+    </div>
+</footer>
 <script type="text/javascript" src="../dist/js/vendor.js"></script>
 <script type="text/javascript" src="../dist/js/app.js"></script>
 </body>

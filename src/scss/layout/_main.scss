@@ -41,8 +41,13 @@ h2.hl {
     background-color: $color-green-light;
   }
   .total {
+    margin: 25px 0px;
     padding: 10px 20px;
-    font-size: 30px;
+    font-size: 33px;
+
+    span{
+      text-decoration: underline;
+    }
   }
 }
 

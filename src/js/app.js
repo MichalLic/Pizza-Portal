@@ -4,6 +4,7 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
 
     $scope.isChecked = false;
     $scope.myToppings = new Array;
+    $scope.orderPizza = false;
 
     $scope.toppings = [
         {name: 'Bacon'},
@@ -66,6 +67,10 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
         }
         console.log($scope.pizzaPrice);
         return ($scope.pizzaPrice + $scope.myToppings.length * $scope.toppingPrice)
-    }
+    };
 
+    $scope.confirm = () => {
+        $scope.orderPizza = true;
+        console.log($scope.orderPizza);
+    }
 }]);

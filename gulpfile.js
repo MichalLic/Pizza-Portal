@@ -6,8 +6,9 @@ const PATH = {
         './node_modules/angular/angular.min.js'
     ],
     css_vendor: [
-        //'./node_modules/.....css'
+        './node_modules/font-awesome/css/font-awesome.min.css'
     ],
+    fonts_vendor: 'node_modules/font-awesome/fonts/**',
     DIST: './dist',
     static: [
         './src/*.html',
@@ -66,21 +67,21 @@ gulp.task('js-vendor', function () {
 /**
  * css task
  */
-//gulp.task('css-vendor', function () {
-//    return gulp.src(PATH.css_vendor)
-//        .pipe($.concat('vendor.css'))
-//        .pipe(gulp.dest(PATH.DIST + '/css'))
-//        .pipe(browserSync.stream());
-//});
+gulp.task('css-vendor', function () {
+   return gulp.src(PATH.css_vendor)
+       .pipe($.concat('vendor.css'))
+       .pipe(gulp.dest(PATH.DIST + '/css'))
+       .pipe(browserSync.stream());
+});
 
 /**fonts task
  *
  */
-//gulp.task('fonts-vendor', function () {
-//    return gulp.src(PATH.fonts_vendor)
-//        .pipe(gulp.dest(PATH.DIST + '/fonts'))
-//        .pipe(browserSync.stream());
-//});
+gulp.task('fonts-vendor', function () {
+   return gulp.src(PATH.fonts_vendor)
+       .pipe(gulp.dest(PATH.DIST + '/fonts'))
+       .pipe(browserSync.stream());
+});
 
 /**copy task
  *
@@ -117,4 +118,4 @@ gulp.task('serve', function () {
 });
 
 // Initialization
-gulp.task('default', ['styles', 'js', 'copy', 'js-vendor', 'serve']);
+gulp.task('default', ['styles', 'js', 'copy', 'css-vendor', 'fonts-vendor', 'fonts-vendor', 'serve']);
