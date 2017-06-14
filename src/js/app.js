@@ -34,4 +34,16 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
 
     $scope.isChecked = false;
 
+    $scope.myToppings = new Array;
+
+    $scope.isCheckedTopping = (event, name)=>{
+        console.log(event.currentTarget.checked ? 'aaaaa' : 'a');
+        if(event.currentTarget.checked) {
+            $scope.myToppings.push({name: name});
+        } else {
+            $scope.myToppings.splice( $scope.myToppings.indexOf(name),1);
+        }
+
+        console.log($scope.myToppings)
+    }
 }]);

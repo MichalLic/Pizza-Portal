@@ -101,12 +101,13 @@
                     </label>
                     <h3 ng-class="{isSelectedHl: isChecked == 3}">Small 30cm</h3>
                 </div>
+
             </form>
         </div>
         <div class="tippings-block green-border">
             <h2 class="hl">Pick your toppings</h2>
             <div class="tipping" ng-repeat="topping in toppings">
-                <input type="checkbox" id="(topping.name)" ng-click="addToppings(topping.name)" ng-model="selectedTopping" ng-value="(topping.name)">
+                <input type="checkbox" id="(topping.name)" ng-click="isCheckedTopping($event, topping.name)" ng-model="selectedTopping" ng-value="(topping.name)" ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3">
                 <span ng-class="{isSelectedTopping : selectedTopping}">
                     {{topping.name}}
                 </span>
@@ -129,6 +130,11 @@
                 </div>
             </div>
             <div ng-show="$index">{{$index}}</div>
+            <div class="pizza-toppings">
+                <ul>
+                    <li ng-repeat="myTopping in myToppings"> {{myTopping.name}}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </main>
