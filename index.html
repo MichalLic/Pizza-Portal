@@ -61,7 +61,8 @@
             <form name="selectForm" class="flex-between">
                 <div class="item-block">
                     <label for="pizzaLg">
-                        <input type="radio" id="pizzaLg" ng-click="setToppingPrice($event)" ng-model="isChecked" ng-value="1">
+                        <input type="radio" id="pizzaLg" ng-click="setToppingPrice($event)" ng-model="isChecked"
+                               ng-value="1">
                         <div ng-class="{isSelected : (isChecked === 1)}">
                             <div class="large-pizza pizza">
                                 <div class="slice-pizza slice1"></div>
@@ -75,7 +76,8 @@
                 </div>
                 <div class="item-block">
                     <label for="pizzaMd">
-                        <input type="radio" id="pizzaMd" ng-click="setToppingPrice($event)" ng-model="isChecked" ng-value="2">
+                        <input type="radio" id="pizzaMd" ng-click="setToppingPrice($event)" ng-model="isChecked"
+                               ng-value="2">
                         <div ng-class="{isSelected : isChecked == 2}">
                             <div class="medium-pizza pizza">
                                 <div class="slice-pizza slice1"></div>
@@ -89,7 +91,8 @@
                 </div>
                 <div class="item-block">
                     <label for="pizzaSm">
-                        <input type="radio" id="pizzaSm" ng-click="setToppingPrice($event)" ng-model="isChecked" ng-value="3">
+                        <input type="radio" id="pizzaSm" ng-click="setToppingPrice($event)" ng-model="isChecked"
+                               ng-value="3">
                         <div ng-class="{isSelected : isChecked == 3}">
                             <div class="small-pizza pizza">
                                 <div class="slice-pizza slice1"></div>
@@ -118,7 +121,7 @@
         </div>
         <div class="order-summary">
             <h2 class="hl">Order Summary</h2>
-            <div class="order-summary-details">
+            <div class="order-summary-details" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">
                 <div class="order-summary-title green-border flex-between" ng-show="isChecked == 1">
                     <p>Large pizza</p>
                     <p>{{prices.largePizza | currency}}</p>
@@ -133,11 +136,12 @@
                 </div>
                 <div class="pizza-toppings">
                     <ul>
-                        <li ng-repeat="myTopping in myToppings"> {{myTopping.name}} {{toppingPrice | currency}}</li>
+                        <li class="flex-between" ng-repeat="myTopping in myToppings"> {{myTopping.name}}
+                            <span>{{toppingPrice | currency}}</span></li>
                     </ul>
                 </div>
             </div>
-
+            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span></h2>
         </div>
     </div>
 </main>

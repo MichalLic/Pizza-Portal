@@ -2,6 +2,9 @@ const pizzaPortal = angular.module('pizzaPortal', []);
 
 pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) => {
 
+    $scope.isChecked = false;
+    $scope.myToppings = new Array;
+
     $scope.toppings = [
         {name: 'Bacon'},
         {name: 'Basil'},
@@ -19,20 +22,14 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
 
     $scope.prices = {
         largePizza: 19.90,
-        largeToppings: 2,
         mediumPizza: 15.90,
-        mediumToppings: 1.5,
         smallPizza: 12.90,
-        smallToppings: 1,
-
     };
 
     $interval(() => {
         $scope.myTime = new Date();
-
     }, 1000);
 
-    $scope.isChecked = false;
 
     $scope.setToppingPrice = (event) => {
         if (event.currentTarget.value == 1) {
@@ -45,18 +42,30 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
         console.log($scope.toppingPrice)
     };
 
-    $scope.myToppings = new Array;
 
     $scope.isCheckedTopping = (event, name) => {
-        console.log(event.currentTarget.value);
-        console.log(event.currentTarget.checked ? 'aaaaa' : 'a');
         if (event.currentTarget.checked) {
             $scope.myToppings.push({name: name});
         } else {
             $scope.myToppings.splice($scope.myToppings.indexOf(name), 1);
         }
-
         console.log($scope.myToppings)
+    };
+
+    $scope.getTotal = () => {
+        $scope.pizzaPrice = null;
+
+        if ($scope.isChecked == 1) {
+            $scope.pizzaPrice = $scope.prices.largePizza
+        }
+        else if ($scope.isChecked == 2) {
+            $scope.pizzaPrice = $scope.prices.mediumPizza
+        }
+        else {
+            $scope.pizzaPrice = $scope.prices.smallPizza
+        }
+        console.log($scope.pizzaPrice);
+        return ($scope.pizzaPrice + $scope.myToppings.length * $scope.toppingPrice)
     }
 
 }]);
