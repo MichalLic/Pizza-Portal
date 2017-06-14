@@ -61,7 +61,7 @@
             <form name="selectForm" class="flex-between">
                 <div class="item-block">
                     <label for="pizzaLg">
-                        <input type="radio" id="pizzaLg" ng-model="isChecked" ng-value="1">
+                        <input type="radio" id="pizzaLg" ng-click="setToppingPrice($event)" ng-model="isChecked" ng-value="1">
                         <div ng-class="{isSelected : (isChecked === 1)}">
                             <div class="large-pizza pizza">
                                 <div class="slice-pizza slice1"></div>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="item-block">
                     <label for="pizzaMd">
-                        <input type="radio" id="pizzaMd" ng-model="isChecked" ng-value="2">
+                        <input type="radio" id="pizzaMd" ng-click="setToppingPrice($event)" ng-model="isChecked" ng-value="2">
                         <div ng-class="{isSelected : isChecked == 2}">
                             <div class="medium-pizza pizza">
                                 <div class="slice-pizza slice1"></div>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="item-block">
                     <label for="pizzaSm">
-                        <input type="radio" id="pizzaSm" ng-model="isChecked" ng-value="3">
+                        <input type="radio" id="pizzaSm" ng-click="setToppingPrice($event)" ng-model="isChecked" ng-value="3">
                         <div ng-class="{isSelected : isChecked == 3}">
                             <div class="small-pizza pizza">
                                 <div class="slice-pizza slice1"></div>
@@ -101,13 +101,16 @@
                     </label>
                     <h3 ng-class="{isSelectedHl: isChecked == 3}">Small 30cm</h3>
                 </div>
-
             </form>
         </div>
         <div class="tippings-block green-border">
             <h2 class="hl">Pick your toppings</h2>
+            <h4 class="warn-title" ng-hide="isChecked == 1 || isChecked == 2 || isChecked == 3">Choose pizza's size at
+                first!</h4>
             <div class="tipping" ng-repeat="topping in toppings">
-                <input type="checkbox" id="(topping.name)" ng-click="isCheckedTopping($event, topping.name)" ng-model="selectedTopping" ng-value="(topping.name)" ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3">
+                <input type="checkbox" id="(topping.name)" ng-click="isCheckedTopping($event, topping.name)"
+                       ng-model="selectedTopping" ng-value="(topping.name)"
+                       ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3">
                 <span ng-class="{isSelectedTopping : selectedTopping}">
                     {{topping.name}}
                 </span>
@@ -115,26 +118,26 @@
         </div>
         <div class="order-summary">
             <h2 class="hl">Order Summary</h2>
-            <div>
-                <div class="flex-between" ng-show="isChecked == 1">
+            <div class="order-summary-details">
+                <div class="order-summary-title green-border flex-between" ng-show="isChecked == 1">
                     <p>Large pizza</p>
                     <p>{{prices.largePizza | currency}}</p>
                 </div>
-                <div class="flex-between" ng-show="isChecked == 2">
+                <div class="order-summary-title green-border flex-between" ng-show="isChecked == 2">
                     <p>Medium pizza</p>
                     <p>{{prices.mediumPizza | currency}}</p>
                 </div>
-                <div class="flex-between" ng-show="isChecked == 3">
+                <div class="order-summary-title green-border flex-between" ng-show="isChecked == 3">
                     <p>Small pizza</p>
                     <p>{{prices.smallPizza | currency}}</p>
                 </div>
+                <div class="pizza-toppings">
+                    <ul>
+                        <li ng-repeat="myTopping in myToppings"> {{myTopping.name}} {{toppingPrice | currency}}</li>
+                    </ul>
+                </div>
             </div>
-            <div ng-show="$index">{{$index}}</div>
-            <div class="pizza-toppings">
-                <ul>
-                    <li ng-repeat="myTopping in myToppings"> {{myTopping.name}}</li>
-                </ul>
-            </div>
+
         </div>
     </div>
 </main>

@@ -27,14 +27,35 @@ h2.hl {
 
     span {
       font-family: "AR CENA";
-      //display: flex;
-      //justify-content: center;
-      //border: 1px solid $color-grey-primary;;
-      //padding: 8px;
       color: $color-black;
       transition: .4s;
-      //cursor: pointer;
-
     }
   }
+}
+
+.order-summary {
+}
+
+.order-summary-details {
+  font-family: "AR CENA";
+  padding: 20px;
+  background-color: $color-green-light;
+
+  .order-summary-title {
+    font-size: 23px;
+    color: $color-grey;
+
+  }
+
+  .pizza-toppings {
+    ul {
+      list-style: none;
+      li {
+        padding: 8px;
+        font-size: 18px;
+
+      }
+    }
+  }
+
 }
