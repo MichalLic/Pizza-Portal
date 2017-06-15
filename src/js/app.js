@@ -1,10 +1,11 @@
-const pizzaPortal = angular.module('pizzaPortal', []);
+const pizzaPortal = angular.module('pizzaPortal', ['pizzaDirective']);
 
 pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) => {
 
     $scope.isChecked = false;
     $scope.myToppings = new Array;
     $scope.orderPizza = false;
+    $scope.unconfirmed = false;
 
     $scope.toppings = [
         {name: 'Bacon'},
@@ -18,7 +19,7 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
         {name: 'Pepperoni'},
         {name: 'Sweetcorn'},
         {name: 'Tomato'},
-        {name: 'Salami'}
+        {name: 'Sausage'}
     ];
 
     $scope.prices = {
@@ -65,13 +66,14 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
         else {
             $scope.pizzaPrice = $scope.prices.smallPizza
         }
-        console.log($scope.pizzaPrice);
         return ($scope.pizzaPrice + $scope.myToppings.length * $scope.toppingPrice)
     };
 
-    // $scope.confirm = () => {
-    //     if ($scope.pizzaForm.$valid) {
-    //         $scope.orderPizza = true;
-    //     }
-    // }
+    $scope.confirm = () => {
+        if ($scope.pizzaForm.$valid && ($scope.isChecked == 1 || $scope.isChecked == 2 || $scope.isChecked == 3)) {
+            $scope.orderPizza = true;
+        } else {
+            $scope.unconfirmed = true;
+        }
+    }
 }]);

@@ -61,7 +61,7 @@
 
             <div class="pizza-section green-border">
                 <div>
-                    <h2 class="hl">Choose your pizzas</h2>
+                    <h2 class="hl">Choose your pizza</h2>
                 </div>
                 <form name="selectForm" class="flex-between">
                     <div class="item-block">
@@ -148,16 +148,13 @@
                     </ul>
                 </div>
             </div>
-            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span>
-            </h2>
-
+            <summary-pizza></summary-pizza>
+            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span></h2>
             <div class="order-block">
-                <button type="submit"
-                        ng-disabled="pizzaForm.$invalid && !isChecked == 1 || !isChecked == 2 || !isChecked == 3"
-                        ng-click="orderPizza = true">Order Pizza!
-                </button>
-                <p ng-hide="pizzaForm.$valid && isChecked == 1 || isChecked == 2 || isChecked == 3"><span class="red-star">*</span>Please check required fields!</p>
+                <button ng-click="confirm()">Order Pizza!</button>
+                <p ng-show="unconfirmed"><span class="red-star">*</span>Please check required fields!</p>
             </div>
+
         </div>
     </div>
 </main>

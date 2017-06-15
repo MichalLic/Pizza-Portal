@@ -75,4 +75,31 @@ h2.hl {
   font-family: "AR CENA";
   color: $color-red-primary;
   padding: 20px 0;
+
+}
+
+.user-order {
+  padding: 20px 0;
+  margin: 20px 0;
+  font-family: "AR CENA";
+
+  h1,
+  h2 {
+    color: $color-grey;
+    text-align: center;
+  }
+
+  h3 {
+    padding-bottom: 20px;
+  }
+
+  ul {
+    padding-top: 20px;
+    list-style: none;
+
+    li {
+      font-size: 20px;
+      padding: 3px 0 3px 10px;
+    }
+  }
 }
