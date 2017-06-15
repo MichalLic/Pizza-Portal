@@ -19,7 +19,7 @@
         <div ng-hide="orderPizza">
             <div class="form-section green-border">
                 <h2 class="hl">Enter your details</h2>
-                <form role="form" name="pizzaForm" class="pizzaForm" novalidate ng-submit="pizzaForm.$valid">
+                <form role="form" name="pizzaForm" class="pizzaForm" novalidate>
                     <div class="form-field">
                         <label for="uName">Name<span class="red-star">*</span></label>
                         <p ng-show="pizzaForm.uName.$touched && pizzaForm.uName.$error.required">Field is required</p>
@@ -33,7 +33,8 @@
                     </div>
                     <div class="form-field">
                         <label for="uConfirm">Confirm<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required">Field is
+                        <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required || pizzaForm.uConfirm.$error.email">
+                            Field is
                             required</p>
                         <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" required="required">
                     </div>
@@ -149,8 +150,14 @@
             </div>
             <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span>
             </h2>
-            <!--<button ng-disabled="!isChecked == 1 || !isChecked == 2 || !isChecked == 3" ng-click="confirm()">Order Pizza!</button>-->
-            <button type="submit" ng-disabled="pizzaForm.$valid" ng-click="confirm()">Order Pizza!</button>
+
+            <div class="order-block">
+                <button type="submit"
+                        ng-disabled="pizzaForm.$invalid && !isChecked == 1 || !isChecked == 2 || !isChecked == 3"
+                        ng-click="orderPizza = true">Order Pizza!
+                </button>
+                <p ng-hide="pizzaForm.$valid && isChecked == 1 || isChecked == 2 || isChecked == 3"><span class="red-star">*</span>Please check required fields!</p>
+            </div>
         </div>
     </div>
 </main>

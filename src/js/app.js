@@ -69,8 +69,9 @@ pizzaPortal.controller('pizzaCrtl', ['$scope', '$interval', ($scope, $interval) 
         return ($scope.pizzaPrice + $scope.myToppings.length * $scope.toppingPrice)
     };
 
-    $scope.confirm = () => {
-        $scope.orderPizza = true;
-        console.log($scope.orderPizza);
-    }
+    // $scope.confirm = () => {
+    //     if ($scope.pizzaForm.$valid) {
+    //         $scope.orderPizza = true;
+    //     }
+    // }
 }]);
