@@ -34,8 +34,7 @@
                     <div class="form-field">
                         <label for="uConfirm">Confirm<span class="red-star">*</span></label>
                         <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required || pizzaForm.uConfirm.$error.email">
-                            Field is
-                            required</p>
+                            Field is required</p>
                         <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" required="required">
                     </div>
                     <div class="form-field">
@@ -48,13 +47,17 @@
                         <label for="uPostcode">PostCode<span class="red-star">*</span></label>
                         <p ng-show="pizzaForm.uPostcode.$touched && pizzaForm.uPostcode.$error.required">Field is
                             required</p>
-                        <input type="text" name="uPostcode" id="uPostcode" ng-model="user.postcode" required="required">
+                        <p ng-show="pizzaForm.uPostcode.$error.pattern">Enter field in format: 00-123</p>
+                        <input type="text" name="uPostcode" id="uPostcode" ng-model="user.postcode"
+                               pattern="\d{2}-\d{3}" required="required">
                     </div>
                     <div class="form-field">
                         <label for="uContact">Contact Number<span class="red-star">*</span></label>
                         <p ng-show="pizzaForm.uContact.$touched && pizzaForm.uContact.$error.required">Field is
                             required</p>
-                        <input type="text" name="uContact" id="uContact" ng-model="user.contact" required="required">
+                        <p ng-show="pizzaForm.uContact.$error.pattern">Enter field in format: 111-111-111</p>
+                        <input type="text" name="uContact" id="uContact" ng-model="user.contact"
+                               pattern="\d{3}-\d{3}-\d{3}" required="required">
                     </div>
                 </form>
             </div>
@@ -149,7 +152,8 @@
                 </div>
             </div>
             <summary-pizza></summary-pizza>
-            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span></h2>
+            <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span>
+            </h2>
             <div class="order-block">
                 <button ng-click="confirm()">Order Pizza!</button>
                 <p ng-show="unconfirmed"><span class="red-star">*</span>Please check required fields!</p>

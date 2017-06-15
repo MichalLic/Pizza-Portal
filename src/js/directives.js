@@ -9,7 +9,7 @@ pizzaDirective.directive('summaryPizza', () => {
                         <ul>
                             <li><span>Name: </span>{{user.name}}</li>
                             <li><span>E-mail: </span>{{user.email}}</li>
-                            <li><span>Address: </span>user.address</li>
+                            <li><span>Address: </span>{{user.address}}</li>
                             <li><span>Post Code: </span>{{user.postcode}}</li>
                             <li><span>Phone: </span>{{user.contact}}</li>
                        </ul>
