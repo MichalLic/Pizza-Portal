@@ -14,5 +14,5 @@ pizzaDirective.directive('summaryPizza', () => {
                             <li><span>Phone: </span>{{user.contact}}</li>
                        </ul>
                     </div>`
-    }
+    };
 });

@@ -22,30 +22,30 @@
                 <form role="form" name="pizzaForm" class="pizzaForm" novalidate>
                     <div class="form-field">
                         <label for="uName">Name<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uName.$touched && pizzaForm.uName.$error.required">Field is required</p>
+                        <p ng-show="pizzaForm.uName.$blur && pizzaForm.uName.$error.required">Field is required</p>
                         <input type="text" name="uName" id="uName" ng-model="user.name" required="required">
                     </div>
                     <div class="form-field">
                         <label for="uEmail">Email<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uEmail.$touched && pizzaForm.uEmail.$error.required || pizzaForm.uEmail.$error.email">
+                        <p ng-show="pizzaForm.uEmail.$blur && pizzaForm.uEmail.$error.required || pizzaForm.uEmail.$error.email">
                             Field is required</p>
                         <input type="email" name="uEmail" id="uEmail" ng-model="user.email" required="required">
                     </div>
                     <div class="form-field">
-                        <label for="uConfirm">Confirm<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uConfirm.$touched && pizzaForm.uConfirm.$error.required || pizzaForm.uConfirm.$error.email">
-                            Field is required</p>
-                        <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" required="required">
+                        <label for="uConfirm">Confirm E-mail<span class="red-star">*</span></label>
+                        <p ng-show="pizzaForm.uConfirm.$blur && pizzaForm.uConfirm.$error.required || pizzaForm.uConfirm.$error.email || pizzaForm.uConfirm.$error.pattern">
+                            Confirm Your E-mail</p>
+                        <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" pattern="\b{{user.email}}\b" required="required">
                     </div>
                     <div class="form-field">
                         <label for="uAddress">Address<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uAddress.$touched && pizzaForm.uAddress.$error.required">Field is
+                        <p ng-show="pizzaForm.uAddress.$blur && pizzaForm.uAddress.$error.required">Field is
                             required</p>
                         <input type="text" name="uAddress" id="uAddress" ng-model="user.address" required="required">
                     </div>
                     <div class="form-field">
                         <label for="uPostcode">PostCode<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uPostcode.$touched && pizzaForm.uPostcode.$error.required">Field is
+                        <p ng-show="pizzaForm.uPostcode.$blur && pizzaForm.uPostcode.$error.required">Field is
                             required</p>
                         <p ng-show="pizzaForm.uPostcode.$error.pattern">Enter field in format: 00-123</p>
                         <input type="text" name="uPostcode" id="uPostcode" ng-model="user.postcode"
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-field">
                         <label for="uContact">Contact Number<span class="red-star">*</span></label>
-                        <p ng-show="pizzaForm.uContact.$touched && pizzaForm.uContact.$error.required">Field is
+                        <p ng-show="pizzaForm.uContact.$blur && pizzaForm.uContact.$error.required">Field is
                             required</p>
                         <p ng-show="pizzaForm.uContact.$error.pattern">Enter field in format: 111-111-111</p>
                         <input type="text" name="uContact" id="uContact" ng-model="user.contact"
