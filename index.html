@@ -7,9 +7,11 @@
 </head>
 <body ng-controller="pizzaCrtl">
 <header>
+
     <div class="container flex-between">
         <div class="logo-block">
-            <a href="#">Pizza Portal</a>
+            <a href="#">Pizza Portal<img src="dist/images/pizza-logo-xs.png" alt=""></a>
+
         </div>
         <div class="time-block">{{myTime | date: 'HH:mm:ss'}}</div>
     </div>
@@ -155,7 +157,7 @@
             <h2 class="total hl flex-between" ng-show="isChecked == 1 || isChecked == 2 || isChecked == 3">Total:<span>{{getTotal() | currency}}</span>
             </h2>
             <div class="order-block">
-                <button ng-click="confirm()">Order Pizza!</button>
+                <button ng-hide="orderPizza" ng-click="confirm()">Order Pizza!</button>
                 <p ng-show="unconfirmed"><span class="red-star">*</span>Please check required fields!</p>
             </div>
 
