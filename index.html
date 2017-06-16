@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="../dist/css/style.css"/>
+    <link rel="stylesheet" href="../dist/css/vendor.css">
 </head>
 <body ng-controller="pizzaCrtl">
 <header>
@@ -37,7 +38,8 @@
                         <label for="uConfirm">Confirm E-mail<span class="red-star">*</span></label>
                         <p ng-show="pizzaForm.uConfirm.$blur && pizzaForm.uConfirm.$error.required || pizzaForm.uConfirm.$error.email || pizzaForm.uConfirm.$error.pattern">
                             Confirm Your E-mail</p>
-                        <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm" pattern="\b{{user.email}}\b" required="required">
+                        <input type="email" name="uConfirm" id="uConfirm" ng-model="user.confirm"
+                               pattern="\b{{user.email}}\b" required="required">
                     </div>
                     <div class="form-field">
                         <label for="uAddress">Address<span class="red-star">*</span></label>
@@ -158,7 +160,7 @@
             </h2>
             <div class="order-block">
                 <button ng-hide="orderPizza" ng-click="confirm()">Order Pizza!</button>
-                <p ng-show="unconfirmed"><span class="red-star">*</span>Please check required fields!</p>
+                <p ng-show="unconfirmed" ng-hide="pizzaForm.$valid && (isChecked == 1 || isChecked == 2 || isChecked == 3)"><span class="red-star">*</span>Please check required fields!</p>
             </div>
 
         </div>
@@ -175,13 +177,15 @@
                 <li><a href="#">Get Coupons</a></li>
             </ul>
         </div>
-        <div class="footer-social">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-        </div>
-        <div class="copyright">
-            &copy PizzaPortal all rights reserved
+        <div class="copy-social">
+            <div class="footer-social flex-between">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </div>
+            <div class="copyright">
+                &copy PizzaPortal all rights reserved
+            </div>
         </div>
     </div>
 </footer>

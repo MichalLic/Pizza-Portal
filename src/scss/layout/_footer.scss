@@ -18,7 +18,24 @@ footer {
       }
     }
   }
-  .copyright {
-    align-self: flex-end;
+
+  .copy-social {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    .footer-social {
+      i {
+        font-size: 20px;
+        transition: .3s;
+        &:hover {
+          transition: .3s;
+          transform: scale(2);
+        }
+      }
+    }
+    .copyright {
+      align-self: flex-end;
+    }
   }
 }
